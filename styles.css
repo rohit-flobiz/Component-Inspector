@@ -1,0 +1,217 @@
+/* MBB Component Inspector Styles */
+
+.mbb-inspector-overlay {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(0, 123, 255, 0.15);
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  z-index: 999998;
+  box-shadow: 0 2px 10px rgba(0, 123, 255, 0.3);
+  animation: mbb-inspector-pulse 2s infinite;
+}
+
+@keyframes mbb-inspector-pulse {
+  0% { border-color: #007bff; }
+  50% { border-color: #28a745; }
+  100% { border-color: #007bff; }
+}
+
+.mbb-inspector-tooltip {
+  position: absolute;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 0;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  z-index: 999999;
+  max-width: 400px;
+  min-width: 300px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+  opacity: 0;
+  animation: mbb-tooltip-fade-in 0.2s ease-out forwards;
+  transition: transform 0.1s ease-out;
+}
+
+/* Special styling for overlay positioned tooltips */
+.mbb-inspector-tooltip.tooltip-overlay {
+  border: 2px solid #ffa500;
+  box-shadow: 0 4px 20px rgba(255, 165, 0, 0.2);
+}
+
+.mbb-inspector-tooltip.tooltip-overlay .tooltip-header {
+  background: #2d2d2d;
+  border-bottom: 1px solid #ffa500;
+}
+
+.mbb-inspector-tooltip.tooltip-overlay .tooltip-header::after {
+  content: '📍 Repositioned';
+  color: #ffa500;
+  font-size: 10px;
+  font-weight: normal;
+  margin-left: 8px;
+}
+
+.mbb-inspector-tooltip .tooltip-header {
+  background: #2d2d2d;
+  padding: 10px 12px;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #333;
+}
+
+.mbb-inspector-tooltip .tooltip-header strong {
+  color: #61dafb;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.mbb-inspector-tooltip .text-content {
+  color: #90ee90;
+  font-style: italic;
+  font-size: 11px;
+  margin-left: 8px;
+}
+
+.mbb-inspector-tooltip .tooltip-section {
+  padding: 8px 12px;
+  border-bottom: 1px solid #333;
+}
+
+.mbb-inspector-tooltip .tooltip-section:last-child {
+  border-bottom: none;
+}
+
+.mbb-inspector-tooltip .section-title {
+  color: #ffa500;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mbb-inspector-tooltip .prop {
+  color: #ffa500;
+  font-weight: 500;
+}
+
+.mbb-inspector-tooltip .value {
+  color: #90ee90;
+  font-weight: 400;
+}
+
+.mbb-inspector-tooltip .hierarchy-item {
+  color: #87ceeb;
+  font-weight: 500;
+}
+
+.mbb-inspector-tooltip .tooltip-footer {
+  padding: 6px 12px;
+  background: #2d2d2d;
+  border-radius: 0 0 8px 8px;
+  text-align: center;
+}
+
+.mbb-inspector-tooltip .tooltip-footer small {
+  color: #888;
+  font-size: 10px;
+}
+
+.mbb-inspector-tooltip .tooltip-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mbb-inspector-tooltip .position-indicator {
+  color: #61dafb !important;
+  font-weight: 500 !important;
+  opacity: 0.8;
+}
+
+/* Arrow positioning based on tooltip position */
+.mbb-inspector-tooltip::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* Bottom positioned tooltip (arrow on top) */
+.mbb-inspector-tooltip.tooltip-bottom::before {
+  top: -6px;
+  left: 20px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #1a1a1a;
+}
+
+/* Top positioned tooltip (arrow on bottom) */
+.mbb-inspector-tooltip.tooltip-top::before {
+  bottom: -6px;
+  left: 20px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #1a1a1a;
+}
+
+/* Right positioned tooltip (arrow on left) */
+.mbb-inspector-tooltip.tooltip-right::before {
+  left: -6px;
+  top: 20px;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 6px solid #1a1a1a;
+}
+
+/* Left positioned tooltip (arrow on right) */
+.mbb-inspector-tooltip.tooltip-left::before {
+  right: -6px;
+  top: 20px;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid #1a1a1a;
+}
+
+/* Overlay positioned tooltip (no arrow) */
+.mbb-inspector-tooltip.tooltip-overlay::before {
+  display: none;
+}
+
+.mbb-inspector-success {
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace !important;
+  animation: mbb-inspector-fade-in 0.3s ease-out;
+}
+
+@keyframes mbb-inspector-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mbb-tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure high specificity to override site styles */
+.mbb-inspector-overlay,
+.mbb-inspector-tooltip,
+.mbb-inspector-success {
+  box-sizing: border-box !important;
+} 

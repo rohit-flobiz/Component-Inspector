@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBB Component Inspector - Test Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+        }
+        
+        .component-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .component-section h2 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        
+        /* Custom component styles */
+        mbb-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        
+        mbb-button:hover {
+            background: #0056b3;
+        }
+        
+        mbb-typography {
+            display: block;
+            margin: 10px 0;
+        }
+        
+        mbb-typography.heading {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+        
+        mbb-typography.body {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        mbb-card {
+            display: block;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        flo-input {
+            display: block;
+            margin: 10px 0;
+        }
+        
+        flo-input input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        app-header {
+            display: block;
+            background: #343a40;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        app-navigation {
+            display: flex;
+            gap: 20px;
+            padding: 10px 0;
+        }
+        
+        app-navigation a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        
+        app-navigation a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .nested-example {
+            border: 2px dashed #007bff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .instructions {
+            background: #e7f3ff;
+            border: 1px solid #007bff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .instructions h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        
+        .instructions ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 MBB Component Inspector - Test Page</h1>
+        
+        <div class="instructions">
+            <h3>🔍 How to Test the Enhanced Extension:</h3>
+            <ul>
+                <li><strong>Hover:</strong> Over any element to see enhanced component tooltips with MBB properties</li>
+                <li><strong>Click:</strong> On highlighted components to copy meaningful properties (not Angular noise)</li>
+                <li><strong>Inspect:</strong> Component hierarchy, style info, and Angular inputs (ng-reflect-*)</li>
+                <li><strong>Toggle:</strong> Use the extension popup to turn inspection on/off</li>
+                <li><strong>New Features:</strong> 
+                    <ul>
+                        <li>📋 Smart property extraction (animate, variant, size, etc.)</li>
+                        <li>🏗️ Component hierarchy visualization</li>
+                        <li>🎨 Style information from CSS classes</li>
+                        <li>📝 Clean text content display</li>
+                        <li>🚀 Enhanced copy with comments and context</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="component-section">
+            <h2>MBB Components</h2>
+            
+            <mbb-typography class="heading" data-variant="h1">
+                This is an MBB Typography Heading
+            </mbb-typography>
+            
+            <mbb-typography class="body" data-variant="body1">
+                This is an MBB Typography body text component. It should be detected when you hover over it.
+            </mbb-typography>
+            
+            <mbb-button id="primary-btn" class="mbb-button mbb-button-primary mbb-button-size-m" 
+                       animate="true" animation="ripple" trigger="click" 
+                       ng-reflect-animation="ripple" ng-reflect-trigger="click" 
+                       ng-reflect-variant="primary" ng-reflect-size="medium"
+                       onclick="alert('Button clicked!')">
+                <mbb-typography fontweight="medium" ng-reflect-font-weight="medium" 
+                               class="mbb-font-type-primary mbb-font-14 mbb-font-medium">
+                    Primary Button
+                </mbb-typography>
+            </mbb-button>
+            
+            <mbb-button class="mbb-button mbb-button-secondary mbb-button-size-s" 
+                       animate="false" variant="secondary" size="small"
+                       ng-reflect-variant="secondary" ng-reflect-size="small">
+                <mbb-typography fontweight="regular" ng-reflect-font-weight="regular">
+                    Secondary Button
+                </mbb-typography>
+            </mbb-button>
+            
+            <mbb-card id="sample-card" class="mbb-card mbb-card-elevated mbb-card-size-m" 
+                     elevation="2" rounded="true" ng-reflect-elevation="2" ng-reflect-rounded="true">
+                <mbb-typography class="mbb-font-type-primary mbb-font-18 mbb-font-bold" 
+                               fontweight="bold" fontsize="18" ng-reflect-font-weight="bold" ng-reflect-font-size="18">
+                    Card Title
+                </mbb-typography>
+                <mbb-typography class="mbb-font-type-secondary mbb-font-14 mbb-font-regular" 
+                               fontweight="regular" fontsize="14" emphasis="medium"
+                               ng-reflect-font-weight="regular" ng-reflect-font-size="14" ng-reflect-emphasis="medium">
+                    This is a card component with nested typography components. 
+                    Try hovering over different parts to see how the extension detects the nearest custom component.
+                </mbb-typography>
+                <mbb-button class="mbb-button mbb-button-primary mbb-button-size-s" 
+                           animate="true" animation="scale" size="small"
+                           ng-reflect-animation="scale" ng-reflect-size="small">
+                    <mbb-typography fontweight="medium" ng-reflect-font-weight="medium">
+                        Card Action
+                    </mbb-typography>
+                </mbb-button>
+            </mbb-card>
+        </div>
+        
+        <div class="component-section">
+            <h2>Flow Components</h2>
+            
+            <flo-input id="username" class="required" data-placeholder="Enter username" data-required="true">
+                <input type="text" placeholder="Username">
+            </flo-input>
+            
+            <flo-input id="email" class="email-input" data-type="email">
+                <input type="email" placeholder="Email address">
+            </flo-input>
+        </div>
+        
+        <div class="component-section">
+            <h2>App Components</h2>
+            
+            <app-header id="main-header" class="sticky" data-theme="dark">
+                <h2>Application Header</h2>
+                <app-navigation class="horizontal">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </app-navigation>
+            </app-header>
+        </div>
+        
+        <div class="component-section">
+            <h2>Nested Components Test</h2>
+            
+            <div class="nested-example">
+                <p>This is a regular div. Try hovering over the nested components inside:</p>
+                
+                <mbb-card class="nested-card">
+                    <div class="card-content">
+                        <mbb-typography class="heading">Nested Card</mbb-typography>
+                        <div class="button-group">
+                            <span>Regular span element</span>
+                            <mbb-button class="small">Nested Button</mbb-button>
+                        </div>
+                    </div>
+                </mbb-card>
+            </div>
+        </div>
+        
+        <div class="component-section">
+            <h2>Regular HTML Elements</h2>
+            <p>These elements should NOT be highlighted (no custom components):</p>
+            
+            <button class="regular-button" onclick="alert('Regular button')">Regular Button</button>
+            <div class="regular-div">Regular Div</div>
+            <span class="regular-span">Regular Span</span>
+            
+            <div class="mixed-content">
+                <p>Mixed content with both regular and custom elements:</p>
+                <span>Regular span</span>
+                <mbb-button class="mixed">Custom Button</mbb-button>
+                <div>Regular div</div>
+            </div>
+        </div>
+        
+        <div class="component-section">
+            <h2>Advanced MBB Components</h2>
+            
+            <mbb-button class="mbb-button mbb-button-primary mbb-button-size-l" 
+                       animate="true" animation="ripple" trigger="click" loading="true" disabled="false"
+                       ng-reflect-animation="ripple" ng-reflect-trigger="click" ng-reflect-loading="true" ng-reflect-disabled="false">
+                <mbb-typography fontweight="bold" ng-reflect-font-weight="bold">
+                    Loading Button
+                </mbb-typography>
+            </mbb-button>
+            
+            <mbb-typography class="mbb-font-type-primary mbb-font-16 mbb-font-medium mbb-font-emphasis-high" 
+                           fontweight="medium" fontsize="16" emphasis="high" color="primary"
+                           ng-reflect-font-weight="medium" ng-reflect-font-size="16" ng-reflect-emphasis="high" ng-reflect-color="primary">
+                Typography with Multiple Properties
+            </mbb-typography>
+            
+            <mbb-card class="mbb-card mbb-card-outlined mbb-card-size-l" 
+                     elevation="0" rounded="true" outline="true" density="comfortable"
+                     ng-reflect-elevation="0" ng-reflect-rounded="true" ng-reflect-outline="true" ng-reflect-density="comfortable">
+                <mbb-typography class="mbb-font-type-primary mbb-font-20 mbb-font-bold" 
+                               fontweight="bold" fontsize="20" ng-reflect-font-weight="bold">
+                    Outlined Card
+                </mbb-typography>
+                <div class="nested-components">
+                    <mbb-button class="mbb-button mbb-button-secondary mbb-button-size-xs" 
+                               animate="false" size="xs" variant="secondary" theme="dark"
+                               ng-reflect-size="xs" ng-reflect-variant="secondary" ng-reflect-theme="dark">
+                        <mbb-typography fontweight="regular">Tiny Button</mbb-typography>
+                    </mbb-button>
+                    <mbb-button class="mbb-button mbb-button-danger mbb-button-size-xl" 
+                               animate="true" animation="pulse" size="xl" variant="danger"
+                               ng-reflect-animation="pulse" ng-reflect-size="xl" ng-reflect-variant="danger">
+                        <mbb-typography fontweight="bold">Danger Button</mbb-typography>
+                    </mbb-button>
+                </div>
+            </mbb-card>
+        </div>
+        
+        <div class="component-section">
+            <h2>Edge Cases & Viewport Testing</h2>
+            
+            <mbb-typography class="empty-component" data-test="empty">
+                <!-- Empty component -->
+            </mbb-typography>
+            
+            <mbb-button class="special-chars" data-special="test&value" data-json='{"key": "value"}'>
+                Button with Special Attributes
+            </mbb-button>
+            
+            <div class="deeply-nested">
+                <div>
+                    <div>
+                        <div>
+                            <mbb-typography class="deep">Deeply nested component</mbb-typography>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Viewport Edge Testing Components -->
+        <style>
+            .viewport-test {
+                position: relative;
+                height: 200px;
+                margin: 20px 0;
+                border: 2px dashed #007bff;
+                background: #f8f9fa;
+            }
+            
+            .corner-component {
+                position: absolute;
+            }
+            
+            .top-left { top: 10px; left: 10px; }
+            .top-right { top: 10px; right: 10px; }
+            .bottom-left { bottom: 10px; left: 10px; }
+            .bottom-right { bottom: 10px; right: 10px; }
+            .center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        </style>
+        
+        <div class="component-section">
+            <h2>🎯 Viewport Edge Testing</h2>
+            <p>Test tooltip positioning near viewport edges. Try resizing your browser window and hovering over these components:</p>
+            
+            <div class="viewport-test">
+                <mbb-button class="corner-component top-left mbb-button mbb-button-primary mbb-button-size-s" 
+                           animate="true" variant="primary" size="small"
+                           ng-reflect-variant="primary" ng-reflect-size="small">
+                    <mbb-typography fontweight="medium">Top Left</mbb-typography>
+                </mbb-button>
+                
+                <mbb-button class="corner-component top-right mbb-button mbb-button-secondary mbb-button-size-s" 
+                           animate="true" variant="secondary" size="small"
+                           ng-reflect-variant="secondary" ng-reflect-size="small">
+                    <mbb-typography fontweight="medium">Top Right</mbb-typography>
+                </mbb-button>
+                
+                <mbb-button class="corner-component bottom-left mbb-button mbb-button-danger mbb-button-size-s" 
+                           animate="true" variant="danger" size="small"
+                           ng-reflect-variant="danger" ng-reflect-size="small">
+                    <mbb-typography fontweight="medium">Bottom Left</mbb-typography>
+                </mbb-button>
+                
+                <mbb-button class="corner-component bottom-right mbb-button mbb-button-success mbb-button-size-s" 
+                           animate="true" variant="success" size="small"
+                           ng-reflect-variant="success" ng-reflect-size="small">
+                    <mbb-typography fontweight="medium">Bottom Right</mbb-typography>
+                </mbb-button>
+                
+                <mbb-card class="corner-component center mbb-card mbb-card-elevated mbb-card-size-s" 
+                         elevation="2" rounded="true"
+                         ng-reflect-elevation="2" ng-reflect-rounded="true">
+                    <mbb-typography fontweight="bold" fontsize="12">Center Component</mbb-typography>
+                    <mbb-button class="mbb-button mbb-button-primary mbb-button-size-xs" size="xs">
+                        <mbb-typography fontweight="regular">Nested</mbb-typography>
+                    </mbb-button>
+                </mbb-card>
+            </div>
+            
+            <p><strong>Instructions:</strong></p>
+            <ul>
+                <li>🔍 Hover over corner components to see smart tooltip positioning</li>
+                <li>📱 Resize your browser window to test different viewport sizes</li>
+                <li>🎯 Notice how tooltips automatically adjust position to stay visible</li>
+                <li>📍 Components that can't find space will show with orange "Repositioned" indicator</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Add some dynamic behavior for testing
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 Test page loaded - Ready for MBB Component Inspector!');
+            
+            // Add a dynamic component after page load
+            setTimeout(() => {
+                const dynamicComponent = document.createElement('mbb-button');
+                dynamicComponent.className = 'dynamic-button';
+                dynamicComponent.textContent = 'Dynamically Added Button';
+                dynamicComponent.setAttribute('data-dynamic', 'true');
+                
+                document.querySelector('.container').appendChild(dynamicComponent);
+                console.log('✅ Dynamic component added');
+            }, 2000);
+        });
+    </script>
+</body>
+</html> 
