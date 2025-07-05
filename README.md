@@ -147,6 +147,7 @@ document.addEventListener('keydown', function(event) {
 2. Try refreshing the page
 3. Disable other extensions that might interfere
 
+
 ## 📝 Development
 
 ### File Structure
