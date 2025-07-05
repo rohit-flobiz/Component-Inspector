@@ -53,6 +53,12 @@ This extension is not yet published on the Chrome Web Store. You'll need to inst
 
 ## 🎯 How to Use
 
+
+https://github.com/user-attachments/assets/d2be76a5-15ef-4745-aa90-0940b6585011
+
+
+
+
 ### Hover to Inspect
 - Hover over any element on a webpage
 - The extension will crawl up the DOM tree to find the nearest custom component
